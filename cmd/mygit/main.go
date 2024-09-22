@@ -3,12 +3,14 @@ package main
 import (
 	"fmt"
 	"os"
+
+	"github.com/codecrafters-io/git-starter-go/pkg/mygit"
 )
 
 // Usage: your_program.sh <command> <arg1> <arg2> ...
 func main() {
 	// You can use print statements as follows for debugging, they'll be visible when running tests.
-	fmt.Println("Logs from your program will appear here!")
+	// fmt.Println("Logs from your program will appear here!")
 
 	if len(os.Args) < 2 {
 		fmt.Fprintf(os.Stderr, "usage: mygit <command> [<args>...]\n")
@@ -16,6 +18,12 @@ func main() {
 	}
 
 	switch command := os.Args[1]; command {
+	case "cat-file":
+		err := mygit.CatFile(os.Args[2:])
+
+		if err != nil {
+			fmt.Println("Error: ", err)
+		}
 	case "init":
 		// Uncomment this block to pass the first stage!
 		
