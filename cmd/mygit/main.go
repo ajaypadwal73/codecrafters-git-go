@@ -24,6 +24,8 @@ func main() {
 		if err != nil {
 			fmt.Println("Error: ", err)
 		}
+	case "hash-object":
+			
 	case "init":
 		// Uncomment this block to pass the first stage!
 		
