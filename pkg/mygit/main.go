@@ -10,22 +10,13 @@ import (
 
 func CatFile(args []string) error {
 	// fmt.Println("args recieved: ", args)
-
-	foundFlag := false 
-	givenHashindex := 0
-	for i, arg := range args {
-		if arg == "-p" {
-			foundFlag = true
-			givenHashindex = i + 1
-		}
-	}
-
-	if !foundFlag {
-		return fmt.Errorf("cat-file flag not found")
+	
+	if args[0] != "-p" {
+		return fmt.Errorf("unknown flag")
 	}
 
 	objDir := ".git/objects"
-	objSHA := args[givenHashindex]
+	objSHA := args[1]
 
 	entries, err := os.ReadDir(objDir + "/" + objSHA[:2])
 
